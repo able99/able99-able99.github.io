@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>{{ page.title }}</title>
-</head>
+{% include head.html %}
 <body>
-　{{ content }}
+<div class="wrapper">
+  <nav><ul>
+    <li><a href="/">home</a></li> 
+    {% for post in site.posts %}
+    <li><a href="{% if post.link %}{{ post.link }}{% else %}{{ post.url }}{% endif %}">
+      {% if post.type=='link' %}&rarr;{% endif %}
+      {{post.title}}
+    </a></li> 
+    {% endfor %}
+  </ul></nav>
+  <section> 
+    <div>
+      <h1>{{ page.title }}</h1>
+      <div>
+        <light>日期: {{ page.date | date_to_string }}</light>
+        &nbsp;&nbsp;
+        {% if page.original %}<a href="{{ page.original }}">转载至：{{ page.original }}</a>{% endif %}
+      </div>
+    </div>
+    <hr />
+    {{ content }}
+  </section>
+  {% include footer.html %}
+</div>
+<footer>
+</footer>
 </body>
 </html>

@@ -1,0 +1,20 @@
+---
+layout: index
+---
+
+<div>
+{% for post in site.posts %}
+  <a style="display: block;" href="{% if post.link %}{{ post.link }}{% else %}{{ post.url }}{% endif %}">
+    <h3>{{ post.title }}</h3>
+    <normal>{{ post.desc }}</normal>
+    <p>
+      <light>
+        <span> {% if post.type %}{{site.types[post.type].title}}{% else %}{{site.types['original'].title}}{% endif %} </span>
+        &nbsp;&nbsp;
+        <span> {{ post.date | date_to_string }} </span>
+      </light>
+    </p>
+    {% if site.posts.last != post %}<hr />{% endif %}
+  </a>
+{% endfor %}
+</div>

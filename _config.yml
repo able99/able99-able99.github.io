@@ -1,1 +1,20 @@
 baseurl: /
+
+title: able99's dollhouse
+desc: react love bnorth 《⊙＿⊙  home assistant is the third
+
+types: 
+  original: 
+    title: '原创'
+  
+  link: 
+    title: '链接'
+  
+  reproduce: 
+    title: '转载'
+  
+
+
+sass:
+  sass_dir: _sass
+  style: compressed
