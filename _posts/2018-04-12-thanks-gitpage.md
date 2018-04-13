@@ -4,6 +4,7 @@ title: 免费Blog 与Githubs 和 jekyll
 desc: 小站搭建完毕，非要感谢下gitpage 和 jekyll，算是给想搭建blog 的伙伴小福利
 ---
 
+{% raw %} 
 # 博客
 
 
@@ -11,6 +12,10 @@ desc: 小站搭建完毕，非要感谢下gitpage 和 jekyll，算是给想搭�
 
 
 # 深入 jekyll
+
+jekyll是一个简单的免费的Blog生成工具，类似WordPress。但是和WordPress又有很大的不同，原因是jekyll只是一个生成静态网页的工具，不需要数据库支持。但是可以配合第三方服务,例如Disqus。
+
+jekyll 创造了一些规则与概念（[参考文档](https://jekyllrb.com/docs/home/)），并采用liquid ([参考文档](https://shopify.github.io/liquid/)) 语言开发
 
 ## 配置信息
 
@@ -23,7 +28,7 @@ content:
   color: #cbcbcb
 ```
 
-文件采用yaml 语法，可阅读[](http://www.ruanyifeng.com/blog/2016/07/yaml.html) 快速入门，同时可以混合使用JSON 格式
+文件采用yaml 语法，可阅读[阮一峰老师的精彩介绍](http://www.ruanyifeng.com/blog/2016/07/yaml.html) 快速入门，同时可以混合使用JSON 格式
 
 ```yaml
 title: blog
@@ -33,7 +38,7 @@ content: {
 }
 ```
 
-配置信息也可以分散到多个文件中，比如在根目录下建立 `_data` 文件夹，并建立 `info.yml`文件：
+配置信息也可以分散到多个文件中，比如在根目录下建立_data 文件夹，并建立info.yml 文件：
 
 ```yaml
 title: info title
@@ -54,9 +59,9 @@ title: info title
 - _data: 配置信息文件夹
 - _layouts: 模板文件夹
 - _include: 其中文件可被包含到其他文件中
-- _posts: 文章文件夹，其中文件可由site.posts 变量遍历，名字必须是 YEAR-MONTH-DAY-title.md|html
+- _posts: 文章文件夹，其中文件可由site.posts 变量遍历，名字必须是 `YEAR-MONTH-DAY-title.md|html`
 - _site: 编译后的缓存文件夹
-- _drafts: 草稿文件夹，需要启动参数 `--drafts` ，GitHub Pages 未开启
+- _drafts: 草稿文件夹，需要启动参数 --drafts，GitHub Pages 未开启
 
 ### 页面文件
 
@@ -71,7 +76,7 @@ title: xxx
 ```
 
 - 页面文件，可以包含jekyll 语句
-- 页面文件，可以是 `html` 文件或者是 `md` markdown文件
+- 页面文件，可以是html 文件或者是markdown(md后缀) 文件
 - 页面文件中layout 参数指定，该页面的模板，指定后，页面会以指定模板渲染，同时将页面的内容，以 content 变量传递
 
 页面文件的参数：
@@ -86,8 +91,8 @@ title: xxx
 ## 模板
 
 - 模板文件，可以包含jekyll 语句
-- 模板文件，可以是 `html` 文件或者是 `md` markdown文件
-- 模板文件可以使用，`content`，改变变量是预处理后的页面文件内容，`page.content` 是原始文件内容
+- 模板文件，可以是html 文件或者是markdown(可以是md 后缀)文件
+- 模板文件可以使用content 全局变量，改变变量是预处理后的页面文件内容，page.content 变量是原始文件内容
 
 ## include
 
@@ -149,7 +154,7 @@ index.html
     Out-of-excerpt
     ```
 
-  - 一般需要去除标示语言，{ { post.excerpt | strip_html } }
+  - 一般需要去除标示语言，`{ { post.excerpt | strip_html } }`
   
 - page.url: 链接
 - page.date: 时间
@@ -177,53 +182,61 @@ index.html
 
 
 ## 语句
-- 模板转移：{ 字符需要转义 \{
-- 输出变量：{{ page.title }}
-- 赋值：{ % assign index = 1 % }
+- 模板转移：
+
+  { 字符需要转义 `\{`
+
+  也可以使用快转义方法
+  ```
+  \{% raw %\}
+  console.log('{}');
+  \{% endraw %\}
+  ```
+  
+- 输出变量：`{{ page.title }}`
+- 赋值：`{ % assign index = 1 % }`
 - 输出格式化后的文本
   ```html
   {% highlight ruby %}
-  function jsfunc() {
     console.log('hello world');
-  }
   {% endhighlight %}
   ```
 
 ## 流程控制
-- if判断：{% if page.title=="xxx" %} xxx {%endif%}
-- for循环：{ % for post in site.posts % } {{post.title}} {%endfor%}
-- 限制数量：{ % for post in site.posts limit:20 % }
-- 判断第一个文章：{% if post == site.posts.first %}
+- if判断：`{% if page.title=="xxx" %} xxx {% endif %}`
+- for循环：`{% for post in site.posts %} {{post.title}} {% endfor %}`
+- 限制数量：`{% for post in site.posts limit:20 %}{% endfor %}`
+- 判断第一个文章：`{% if post == site.posts.first %}{% endif %}`
 
 ## 常用函数
 
 ### 链接
-- 相对地址： `{{ "/assets/style.css" | relative_url }}` => `/my-baseurl/assets/style.css`
-- 绝对地址： `{{ "/assets/style.css" | absolute_url }}` => `http://example.com/my-baseurl/assets/style.css`
-- cgi 编码：`{{ "foo, bar; baz?" | cgi_escape }}` => `foo%2C+bar%3B+baz%3F`
-- uri 编码：`{{ "http://foo.com/?q=foo, \bar?" | uri_escape }}` => `http://foo.com/?q=foo,%20%5Cbar?`
+- 相对地址： `{{ "/assets/style.css" | relative_url }}` /my-baseurl/assets/style.css
+- 绝对地址： `{{ "/assets/style.css" | absolute_url }}` http://example.com/my-baseurl/assets/style.css
+- cgi 编码：`{{ "foo, bar; baz?" | cgi_escape }}` foo%2C+bar%3B+baz%3F
+- uri 编码：`{{ "http://foo.com/?q=foo, \bar?" | uri_escape }}` http://foo.com/?q=foo,%20%5Cbar?
 
 ### 字符串
-- 删除指定文本：{ { post.url | remove: 'http' } }
-- 去掉html 标签：{ { post.excerpt | strip_html } }
-- 单词的个数：{ { page.content | number_of_words } }
+- 删除指定文本：`{ { post.url | remove: 'http' } }`
+- 去掉html 标签：`{ { post.excerpt | strip_html } }`
+- 单词的个数：`{ { page.content | number_of_words } }`
 
 ### 时间格式化
-- { { site.time | date_to_xmlschema } } 2008-11-07T13:07:54-08:00
-- { { site.time | date_to_rfc822 } } Mon, 07 Nov 2008 13:07:54 -0800
-- { { site.time | date_to_string } } 07 Nov 2008
-- { { site.time | date_to_long_string } } 07 November 2008
+- `{ { site.time | date_to_xmlschema } }` => 2008-11-07T13:07:54-08:00
+- `{ { site.time | date_to_rfc822 } }` => Mon, 07 Nov 2008 13:07:54 -0800
+- `{ { site.time | date_to_string } }` => 07 Nov 2008
+- `{ { site.time | date_to_long_string } }` => 07 November 2008
 
 ### 数组与对象
-- 长度：{ { array | size } }
-- 排序：{ { site.pages | sort: 'title', 'last' } }
-- 搜索：{ { site.members | where:"graduation_year","2014" } } 
-- 对象序列化为字符串：{ { page.tags | array_to_sentence_string } }
-- 字符串转JSON：{ { site.data.projects | jsonify } }
+- 长度：`{ { array | size } }`
+- 排序：`{ { site.pages | sort: 'title', 'last' } }`
+- 搜索：`{ { site.members | where:"graduation_year","2014" } } `
+- 对象序列化为字符串：`{ { page.tags | array_to_sentence_string } }`
+- 字符串转JSON：`{ { site.data.projects | jsonify } }`
 
 ## scss
 
-Sass（Syntactically Awesome Style Sheets）是一个相对新的编程语言，Sass为web前端开发而生，可以用它来定义一套新的语法规则和函数，以加强和提升CSS。通过这种新的编程语言，你可以使用最高效的方式，以少量的代码创建复杂的设计。它改进并增强了CSS的能力，增加了变量，局部和函数这些特性。[快速上手](https://www.sass.hk/guide/)
+Sass为web前端开发而生，可以使用最高效的方式，以少量的代码创建复杂的设计。它改进并增强了CSS的能力，增加了变量，局部和函数这些特性。[快速上手](https://www.sass.hk/guide/)
 
 Jekyll 3 已经自带Sass编译器，使用方法：
 
@@ -243,9 +256,11 @@ Jekyll 3 已经自带Sass编译器，使用方法：
   @import "style";
   ```
 
-  **注意：---不要去掉，否则不会被jekyll 预处理**
+  **注意：横线不要去掉，否则不会被jekyll 预处理**
 
 - 正常使用该css 文件，比如
-```html
-<link rel="stylesheet" href="/css/styles.css">
-```
+
+  ```html
+  <link rel="stylesheet" href="/css/styles.css">
+  ```
+{% endraw %}
