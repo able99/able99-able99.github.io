@@ -8,6 +8,8 @@
 /www
 /platforms
 /plugins
+/_site/
+/.sass-cache/
 
 # production
 
