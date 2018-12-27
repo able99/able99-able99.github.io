@@ -3,6 +3,13 @@ baseurl: /
 title: able99's dollhouse
 desc: react love bnorth 《⊙＿⊙  home assistant is the third
 
+sass:
+  sass_dir: _sass
+  style: compressed
+
+permalink:
+  none
+
 types: 
   original: 
     title: '原创'
@@ -12,9 +19,15 @@ types:
   
   reproduce: 
     title: '转载'
+
+mycategories:
+  uncategory:
+    title: '随笔'
   
+urls:
+  bnorthGitPage: 'https://able99.github.io/bnorth/'
 
+# svg editor https://svg-edit.github.io/svgedit/releases/svg-edit-2.8.1/svg-editor.html
 
-sass:
-  sass_dir: _sass
-  style: compressed
+markdown: kramdown
+highlighter: rouge

@@ -1,0 +1,11 @@
+<div>
+  {% assign posts = site.posts %}
+  {% for post in posts %}
+    {% if post.id == include.param %}
+      {% assign url = post.url %}
+      {% if post.link %}{% assign url = post.link %}{% endif %}
+      <p>{{post.excerpt}}</p>
+      <p><a href='{{url}}'>点击进入</a></p>
+    {% endif %}
+  {% endfor %}
+</div>

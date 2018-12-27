@@ -2,19 +2,27 @@
 layout: index
 ---
 
-<div>
-{% for post in site.posts %}
-  <a style="display: block;" href="{% if post.link %}{{ post.link }}{% else %}{{ post.url }}{% endif %}">
-    <h3>{{ post.title }}</h3>
-    <normal>{{ post.desc }}</normal>
-    <p>
-      <light>
-        <span> {% if post.type %}{{site.types[post.type].title}}{% else %}{{site.types['original'].title}}{% endif %} </span>
-        &nbsp;&nbsp;
-        <span> {{ post.date | date_to_string }} </span>
-      </light>
-    </p>
-    {% if site.posts.last != post %}<hr />{% endif %}
-  </a>
+{% for category in site.categories %}
+  {% assign title = category.first %}
+  {% if site.mycategories[title].title %}{% assign title = site.mycategories[title].title %}{% endif %}
+  {% assign size = category | last | size %}
+  {% assign posts = category.last | sort:'weight' %}
+
+  <h2 id="{{category.first}}">{{ title }}({{ size }})</h2>
+  {% for post in posts %}
+    {% assign url = post.url %}
+    {% if post.link %}{% assign url = post.link %}{% endif %}
+    {% assign desc = post.excerpt | strip_html %}
+    {% assign type = post.type %}
+    {% if site.types[type].title %}{% assign type = site.types[type].title %}{% else %}{% assign type = site.types['original'].title %}{% endif %}
+    {% assign time = post.date | date_to_string %}
+    <a style="display: block;" href="{{url}}">
+      <h3>{{ post.title }}</h3>
+      <normal>{{ desc }}</normal>
+      <p><light><span> {{type}} </span>&nbsp;&nbsp;<span> {{ time }} </span></light></p>
+      {% if posts.last != post %}<hr />{% endif %}
+    </a>
+  {% endfor %}
 {% endfor %}
+
 </div>

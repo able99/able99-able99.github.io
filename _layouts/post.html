@@ -4,12 +4,23 @@
 <body>
 <div class="wrapper">
   <nav><ul>
-    <li><a href="/">home</a></li> 
-    {% for post in site.posts %}
-    <li><a href="{% if post.link %}{{ post.link }}{% else %}{{ post.url }}{% endif %}">
-      {% if post.type=='link' %}&rarr;{% endif %}
-      {{post.title}}
-    </a></li> 
+    <li><a style="font-weight: bold" href="{{site.baseurl}}">首页</a></li> 
+
+    {% for category in site.categories %}
+      {% assign title = category.first %}
+      {% if site.mycategories[title].title %}{% assign title = site.mycategories[title].title %}{% endif %}
+      {% assign size = category | last | size %}
+      <li><a style="font-weight: bold" href="{{ site.baseurl }}#{{category.first}}">
+        {{ title }}({{ size }})
+      </a></li>
+    {% endfor %}
+
+    {% assign posts = site.categories[page.category] %}
+    {% if posts != null %}{% assign posts = posts | sort:'weight' %}{% endif %}
+    {% for post in posts %}
+      {% assign url = post.url %}
+      {% if post.link %}{% assign url = post.link %}{% endif %}
+      <li><a href="{{url}}">{{post.title}}</a></li> 
     {% endfor %}
   </ul></nav>
   <section> 
@@ -26,7 +37,5 @@
   </section>
   {% include footer.html %}
 </div>
-<footer>
-</footer>
 </body>
 </html>
