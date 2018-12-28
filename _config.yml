@@ -1,4 +1,4 @@
-baseurl: /
+# baseurl: /
 
 title: able99's dollhouse
 desc: react love bnorth 《⊙＿⊙  home assistant is the third
@@ -21,8 +21,10 @@ types:
     title: '转载'
 
 mycategories:
-  uncategory:
+  cuncategory:
     title: '随笔'
+  cbnorth:
+    title: '大前端开发套件 bnorth'
   
 urls:
   bnorthGitPage: 'https://able99.github.io/bnorth/'

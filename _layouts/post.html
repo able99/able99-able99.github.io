@@ -4,13 +4,13 @@
 <body>
 <div class="wrapper">
   <nav><ul>
-    <li><a style="font-weight: bold" href="{{site.baseurl}}">首页</a></li> 
+    <li><a style="font-weight: bold" href="{{ '/' | relative_url }}">首页</a></li> 
 
     {% for category in site.categories %}
       {% assign title = category.first %}
       {% if site.mycategories[title].title %}{% assign title = site.mycategories[title].title %}{% endif %}
       {% assign size = category | last | size %}
-      <li><a style="font-weight: bold" href="{{ site.baseurl }}#{{category.first}}">
+      <li><a style="font-weight: bold" href="{{ '/' | relative_url }}#{{category.first}}">
         {{ title }}({{ size }})
       </a></li>
     {% endfor %}

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'React: why me'
-category: uncategory
+category: cuncategory
 weight: 0
 ---
 
@@ -23,7 +23,7 @@ react 用最富创造性的思想来构建前端，虽然虚拟dom 带来的性�
 页面数据更新时，传统的方式是利用dom api 对页面元素进行逐一的增删改查操作，而react 是更新虚拟dom，批量操作，比较虚拟dom的改变量，然后将变化部分，同步到浏览器dom 中，从而提高渲染速度
 ￼
 
-![vdom]({{ "images/vdom.jpg" | prepend: site.baseurl }})
+![vdom]({{ "images/vdom.jpg" | relative_url }})
 
 
 
@@ -105,13 +105,13 @@ web 框架对数据处理一般来说有3中方式：
 
   在模型层修改数据，视图会自动更新，同时视图修改数据，模型层也会同步。典型的框架有angularjs。
 ￼
-  ![vdom]({{ "images/twoway.jpg" | prepend: site.baseurl }})
+  ![vdom]({{ "images/twoway.jpg" | relative_url }})
 
 1. 单向数据流
 
   将模板和数据整合一起形成HTML，再写入文档流里面。典型的有reactjs 等。
 
-  ![vdom]({{ "images/oneway.jpg" | prepend: site.baseurl }})
+  ![vdom]({{ "images/oneway.jpg" | relative_url }})
 
 ￼
 

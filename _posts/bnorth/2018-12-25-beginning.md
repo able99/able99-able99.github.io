@@ -1,7 +1,7 @@
 ---
 layout: post
 title: bnorth 从零开始开发 h5 与 bybird app
-category: bnorth
+category: cbnorth
 weight: 1
 ---
 
@@ -36,13 +36,13 @@ weight: 1
     ```
 
 几个步骤下来后，将自动启动 chrome 显示页面内容，并等待调试。
-![demo preview]({{ "images/demo_preview.png" | prepend: site.baseurl }})
+![demo preview]({{ "images/demo_preview.png" | relative_url }})
 
 ### 这条命令做了什么
 
 `npx @bnorth/cli create` 执行后，将下载并执行 bnorth 提供的脚手架命令并执行 create 子命令。create 子命令在当前目录按照模板建立了工程，工程结构如下：
 
-![demo dir structor]({{ "images/demo_dir_structor.png" | prepend: site.baseurl }})
+![demo dir structor]({{ "images/demo_dir_structor.png" | relative_url }})
 
 1. package.json：是应用的配置文件
 1. src 目录：是源代码所在目录

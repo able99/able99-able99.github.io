@@ -3,7 +3,7 @@ layout: post
 type: link
 title: bnorth components 参考手册
 link: https://able99.github.io/bnorth/components/#/
-category: bnorth
+category: cbnorth
 weight: 6
 ---
 

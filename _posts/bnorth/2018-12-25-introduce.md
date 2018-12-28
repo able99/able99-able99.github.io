@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 初识 bnorth
-category: bnorth
+category: cbnorth
 weight: 3
 ---
 
