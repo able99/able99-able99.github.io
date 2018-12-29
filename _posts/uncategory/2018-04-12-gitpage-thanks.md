@@ -1,9 +1,10 @@
 ---
 layout: post
-title: 免费Blog 与Githubs 和 jekyll 
-desc: 小站搭建完毕，非要感谢下gitpage 和 jekyll，算是给想搭建blog 的伙伴小福利
+title: 免费Blog 与 gitpages 和 jekyll 
+desc: 小站搭建完毕，非要感谢下 gitpages 和 jekyll，算是给想搭建 blog 的伙伴小福利
 category: cuncategory
 weight: 0
+tags: [gitpages, jekyll]
 ---
 小站搭建完毕，非要感谢下gitpage 和 jekyll，算是给想搭建blog 的伙伴小福利
 

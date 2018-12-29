@@ -2,11 +2,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ site.desc }}">
-  <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url | prepend: site.url }}">
 
-  <!-- Icons -->
+  {% assign title = site.title %}
+  {% if page.title %}
+    {% assign title = title | prepend: '-' %}
+    {% assign title = title | prepend: page.title %}
+  {% endif %}
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | escape }}"> 
+  <meta name="keywords" content="{{ page.tags | join: ', ' | escape }}"/> 
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url | prepend: site.url }}">
   <link rel="shortcut icon" href="{{ 'images/favicon.ico' | relative_url }}">
   <link rel="stylesheet" href="{{ 'css/style.css' | relative_url }}">
 </head>

@@ -3,6 +3,7 @@ layout: post
 title: bnorth 从零开始开发 h5 与 bybird app
 category: cbnorth
 weight: 1
+tags: [react, bnorth, 入门]
 ---
 
 从环境搭建到工具选择，从开发实例到基本概念，用简单的方式给 bnorth 编程一个快照。仅为初次接触开发准备的教程，大牛请绕行。

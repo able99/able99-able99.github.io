@@ -3,13 +3,14 @@ layout: post
 title: 初识 bnorth
 category: cbnorth
 weight: 3
+tags: [react, bnorth, 大前端]
 ---
 
 首先了解下 bnorth 工具集的组成和几个重要概念。
 
 ## 组成成分
 
-<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<svg width="480" height="320" preserveAspectRatio="none" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
  <g>
   <title>Layer 1</title>
   <rect fill="#ffffff" stroke="#000000" x="38.5" y="26" width="71" height="58" id="svg_1"/>
@@ -43,22 +44,30 @@ weight: 3
  </g>
 </svg>
 
-1. core 是构建应用的核心，是应用的入口。core 实际上是一个mvvc 框架，实现了 App 类。提供了事件管理，页面管理，数据管理，插件管理，等核心功能
-1. rich.css 是一个css class 库，提供了丰富了样式类，用户几乎可以在不了解css 的情况下，使用 rich.css 完成页面的样式设计。同时css class 是页面与组件共享的，减少css 的编码量和代码尺寸
-1. components 提供了丰富的组件，包括布局组件 View，Panel 等，小组件 Button，Icon等，动画组件 AnimationFade，AnimationCollapse 等，以及复杂组件 modal，picker 等等
-1. build 提供了 es6 和 react 的编译装配，工程配置，代理功能以及调试服务等功能
-1. cli 提供了创建应用的脚手架
-1. cordova 提供 hybird 打包的相关功能
-1. plugin-xxx 提供了丰富的插件，可挂载在实例后的 app 类上，为用户提供扩展功能，一下列举几个重要插件：
+- core，components，rich.css 是工具集中应用构建的主要部分
+ 
+    + core：是构建应用的核心，是应用的入口。core 实际上是一个事件驱动的 mvc 框架，实现了 App 类。提供了事件管理，页面管理，数据管理，插件管理，等核心功能
+    + components：提供了丰富的组件，包括布局组件 View，Panel 等，小组件 Button，Icon等，动画组件 AnimationFade，AnimationCollapse 等，以及复杂组件 modal，picker 等等
+    + rich.css：是一个可定制的，全面覆盖的 css 样式库
 
-    - network 提供基于 axios 的网络请求能力
-    - request 
-    - browser
+- cli，build，doc-reader，是 bnorth 工具集中的工具，提供了内部使用的功能
+
+    + cli：bnorth 脚手架
+    + build：build 是 bnorth 体系内部使用同一的编译和运行库，实现了代码编译，运行调试服务器等功能。
+    + doc-reader：为 bnorth 工具集提供统一的 api 文档生成方案。
+
+- cordova，eletron，是 bnorth 工具集中的打包工具，提供了不同平台本地应用生成的能力
+
+    + cordova：提供移动端（android，ios） hybird app 打包的相关功能
+    + eletron：提供 pc 端 app 打包的相关功能，暂未完成
+
+- plugin 指 bnorth 格式的插件，无限扩展了 bnorth 能力
+
 
 ## 核心的基本构造
 
 core 是应用构建的核心，也是应用的入口，应用首先需要实例化 App 类，然后通过 start 方法启动应用。start 方法触发一系列的事件，各个模块和插件在收到事件后，完成初始化和相关任务，最终完成应用启动。core 是由 App 类和几个由 App 初始化并挂载在 App 上的模块组成。
-<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<svg width="480" height="320" preserveAspectRatio="none" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
  <g>
   <title>Layer 1</title>
   <rect stroke="#000000" fill="#ffffff" x="114" y="22" width="72" height="437.99999" id="svg_1"/>
@@ -85,6 +94,18 @@ core 是应用构建的核心，也是应用的入口，应用首先需要实例
   <text id="svg_24" fill="#000000" stroke="#000000" stroke-width="0" x="263.73438" y="446" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve">Utils</text>
  </g>
 </svg>
+
+- App：应用的主类，其他模块都是挂载在 app 的实例上
+- Event：事件管理模块
+- Router：路由管理模块
+- Render：负责 react 根组件管理和 dom 操作能力 
+- Context：数据管理模块
+- Plugin：插件管理模块
+- Log：日志管理模块
+- Keyboard：键盘事件管理模块
+- Utils：工具函数集
+- Page：关于具体页面的类
+- State：关于具体数据单元的类
 
 ## 几个概念
 
