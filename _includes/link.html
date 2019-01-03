@@ -5,5 +5,7 @@
     {% if post.link %}{% assign url = post.link %}{% endif %}
     <p>{{post.excerpt}}</p>
     <p><a href='{{url}}'>点击进入</a></p>
+  {% else %}
+    <blockquote><p>TODO</p></blockquote>
   {% endif %}
 </div>

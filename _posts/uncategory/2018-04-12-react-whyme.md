@@ -17,6 +17,8 @@ react来自于facebook，是的，就是那个你们听说过但是打不开的�
 
 react 用最富创造性的思想来构建前端，虽然虚拟dom 带来的性能提升是选择react 的最重要原因，但是其技术背后的设计哲学更值得我们学习。
 
+js 可以架构，而 html 和 css 无法架构，react 思想，使得 h5 架构可以体系化。
+
 ## 从 MVC 到 MVVM 再到 React
 
 csdn 上有一篇非常好的文章，有种 react 横空出世的感觉，[进入链接](https://blog.csdn.net/woshinannan741/article/details/76034586)
