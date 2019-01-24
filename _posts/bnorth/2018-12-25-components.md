@@ -93,7 +93,7 @@ bnorth 组件库，包装了一些组件，实现了 bnorth 接口的插件，�
 任何组件都支持通过若干样式表属性增加样式表条目的方式，样式表属性是以 bs- 开头的属性，例如：
 
 ```jsx
-<Panel bs-width="10px" style={{height: 10}}/> // style: 'width: 10px, height: 10px'
+<Panel bs-width="10px" style=\{\{height: 10\}\}/> // style: 'width: 10px, height: 10px'
 ```
 
 多个样式表属性也是追加方式。
@@ -165,7 +165,7 @@ ReactDOM.render(<Button onClick={()=>alert('hello')}>click</Button>, document.qu
 1. 按照 bnorth 组件的一般约定，给组件设置子组件的属性。比如设置导航按钮的组件下边框与容器组件分离开
 
     ```jsx
-    <Tabs navProps={{className:'border-set-bottom-'}}>
+    <Tabs navProps=\{\{className:'border-set-bottom-'\}\}>
       <Tabs.Item title="A">page A</Tabs.Item>
       <Tabs.Item title="B">page B</Tabs.Item>
     <Tabs>
